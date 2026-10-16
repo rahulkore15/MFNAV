@@ -4,6 +4,8 @@ import path from 'path';
 
 test('Capture Short Term Fund Direct-Growth NAV daily', async ({ page }) => {
 
+    fs.writeFileSync(path.resolve('nav-email.txt'), 'NAV capture started at ' + new Date().toISOString());
+
   // 1. Go to NAV page
   await page.goto('https://www.icicipruamc.com/mutual-fund/nav-&-idcw');
   await page.getByRole('textbox', { name: 'Search by fund name' }).click();
