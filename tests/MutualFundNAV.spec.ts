@@ -45,6 +45,9 @@ if (changeText.includes('↓') || changeText.includes('down') || changeValue.sta
 
   console.log(`NAV Captured: ${navValue} on ${navDate} | 1 Day Change: ${changeValue} ${trend}`);
 
+  // Save for Jenkins email
+fs.writeFileSync(path.resolve('nav-email.txt'), `NAV Captured: ${navValue} on ${navDate} | 1 Day Change: ${changeValue} ${trend}`);
+
   // 5. Save to CSV for daily tracking
   const csvPath = path.resolve('nav-history.csv');
   const csvLine = `${new Date().toISOString()},${navDate},${navValue},Short Term Fund Direct-Growth\n`;
