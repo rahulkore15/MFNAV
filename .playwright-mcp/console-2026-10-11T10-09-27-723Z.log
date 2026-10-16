@@ -1,0 +1,7 @@
+[    6916ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://apimf.icicipruamc.com/ts/v1/transaction/cart-last-transaction:0
+[    6917ms] [ERROR] AxiosError: Request failed with status code 401
+    at settle (https://www.icicipruamc.com/static/js/index.Do13FbEu.js:21:13351)
+    at XMLHttpRequest._e (https://www.icicipruamc.com/static/js/index.Do13FbEu.js:21:22017) @ https://www.icicipruamc.com/static/js/index.Do13FbEu.js:14
+[   11938ms] [LOG] HaptikSDK : Initialization Started @ https://toolassets.haptikapi.com/platform/javascript-xdk/production/app.js:1
+[   14353ms] [WARNING] Timer 'OTHERS' does not exist @ https://toolassets.haptikapi.com/platform/javascript-xdk/production/app.js:1
+[   14365ms] [WARNING] Haptik-SDK - unsupported language null is detected. switching to english @ https://toolassets.haptikapi.com/platform/javascript-xdk/production/app.js:1
