@@ -2,19 +2,21 @@ import { test, expect } from '@playwright/test';
 import * as fs from 'fs';
 import path from 'path';
 
+test.setTimeout(120000); // 2 minutes for slow network Jenkins runs
+
 test('Capture Short Term Fund Direct-Growth NAV daily', async ({ page }) => {
-  await page.goto('https://www.icicipruamc.com/mutual-fund/nav-&-idcw', { timeout: 60000 });
+  await page.goto('https://www.icicipruamc.com/mutual-fund/nav-&-idcw', { timeout: 90000 });
 
   await page.getByRole('textbox', { name: 'Search by fund name' }).click();
   await page.getByRole('textbox', { name: 'Search by fund name' }).fill('short');
   await page.getByRole('button', { name: 'SEARCH', exact: true }).click();
 
   await page.getByRole('checkbox', { name: /Short Term Fund Direct - Growth/ }).first().click();
-  await page.waitForSelector('text=Fund Name', { timeout: 30000 });
-  await page.waitForTimeout(5000);
+  await page.waitForSelector('text=Fund Name', { timeout: 60000 });
+  await page.waitForTimeout(7000);
 
   const targetRow = page.locator('tr').filter({ hasText: 'Short Term Fund' }).filter({ hasText: 'Direct - Growth' }).first();
-  await expect(targetRow).toBeVisible({ timeout: 30000 });
+  await expect(targetRow).toBeVisible({ timeout: 60000 });
 
   const navText = await targetRow.locator('td').nth(1).innerText();
   const changeText = await targetRow.locator('td').nth(2).innerText();
