@@ -36,7 +36,7 @@ test('Capture Short Term Fund Direct-Growth NAV daily', async ({ page }) => {
   if (changeText.includes('↑') || parseFloat(changeValue) > 0) trend = 'UP';
   if (changeText.includes('↓') || changeValue.startsWith('-')) trend = 'DOWN';
 
-  const finalText = `NAV Captured: ${navValue} on ${navDate} | 1 Day Change: ${changeValue} ${trend} | Fund: Short Term Direct-Growth - LIVE`;
+  const finalText = `Fund: Short Term Direct-Growth - NAV Captured: ${navValue} on ${navDate} | 1 Day Change: ${changeValue} ${trend} | LIVE`;
   console.log(finalText);
 
   // Write ONLY if live value captured
