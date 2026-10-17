@@ -47,10 +47,13 @@ if (changeText.includes('↓') || changeText.includes('down') || changeValue.sta
 
   console.log(`NAV Captured: ${navValue} on ${navDate} | 1 Day Change: ${changeValue} ${trend}`);
 
-  // Save for Jenkins email - FULL LINE
-fs.writeFileSync(path.resolve('nav-email.txt'), `NAV Captured: ${navValue} on ${navDate} | 1 Day Change: ${changeValue} ${trend} | Fund: Short Term Direct-Growth`);
-console.log('nav-email.txt created');
-
+  // Save for Jenkins email - WRITE TO 3 LOCATIONS so Jenkins always finds it
+  const finalText = `NAV Captured: ${navValue} on ${navDate} | 1 Day Change: ${changeValue} ${trend} | Fund: ICICI Short Term Direct-Growth`;
+  fs.writeFileSync('nav-email.txt', finalText);
+  fs.writeFileSync(path.resolve('nav-email.txt'), finalText);
+  fs.writeFileSync(path.join(process.cwd(), 'nav-email.txt'), finalText);
+  console.log('nav-email.txt created: ' + finalText);
+  
   // 5. Save to CSV for daily tracking
   const csvPath = path.resolve('nav-history.csv');
   const csvLine = `${new Date().toISOString()},${navDate},${navValue},Short Term Fund Direct-Growth\n`;
