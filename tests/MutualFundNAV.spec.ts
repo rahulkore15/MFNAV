@@ -39,9 +39,14 @@ test('Capture Short Term Fund Direct-Growth NAV daily', async ({ page }) => {
   const finalText = `Fund: Short Term Direct-Growth - NAV Captured: ${navValue} on ${navDate} | 1 Day Change: ${changeValue} ${trend} | LIVE`;
   console.log(finalText);
 
+  const emaildtext = `NAV Value is ${navValue} on  ${navDate} Change Value is ${changeValue} Trend is ${trend}`;
   // Write ONLY if live value captured
   fs.writeFileSync('nav-email.txt', finalText);
   fs.writeFileSync(path.join(process.cwd(), 'nav-email.txt'), finalText);
+
+  fs.writeFileSync('emaildtext.txt', emaildtext);
+  fs.writeFileSync(path.join(process.cwd(), 'emaildtext.txt'), emaildtext);
+
 
   const csvPath = path.join(process.cwd(), 'nav-history.csv');
   if (!fs.existsSync(csvPath)) fs.writeFileSync(csvPath, 'Timestamp,NAV_Date,NAV_Value,Change\n');
